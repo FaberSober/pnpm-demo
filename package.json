@@ -6,7 +6,8 @@
 		"changeset": "changeset",
 		"version-packages": "changeset version",
 		"release": "pnpm build && pnpm release:only",
-		"release:only": "changeset publish --registry=https://registry.npmjs.com/"
+		"release:only": "changeset publish --registry=https://registry.npmjs.com/",
+		"commit": "cz"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.25.2",
