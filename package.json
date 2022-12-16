@@ -1,5 +1,13 @@
 {
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"build": "pnpm --filter=@farando/* run build",
+		"clear": "rimraf 'packages/*/{lib,node_modules}' && rimraf node_modules",
+		"changeset": "changeset",
+		"version-packages": "changeset version"
+	},
 	"devDependencies": {
+		"@changesets/cli": "^2.25.2",
 		"father-build": "^1.22.5",
 		"rollup": "^3.7.4",
 		"typescript": "^4.9.4"
