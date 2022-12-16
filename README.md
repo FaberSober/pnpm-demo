@@ -3,12 +3,15 @@
 https://blog.csdn.net/astonishqft/article/details/124823381
 
 ## Get Start
+```
+pnpm init
+```
 
 ### 全局的公共依赖包
-全局安装`father-build`
+全局安装`father`
 
 ```
-pnpm i -Dw father-build
+pnpm i -Dw father
 ```
 
 pnpm 提供了 -w, --workspace-root 参数，可以将依赖包安装到工程的根目录下，作为所有 package 的公共依赖
@@ -57,7 +60,7 @@ pnpm install @farando/monorepo2 -r --filter @farando/monorepo1
 ### 配置changesets
 安装
 ```
-pnpm add -DW @changesets/cli
+pnpm add -Dw @changesets/cli
 ```
 
 初始化
@@ -91,6 +94,17 @@ pnpm changeset init
 - updateInternalDependencies: 确保某包依赖的包发生 upgrade，该包也要发生 version upgrade 的衡量单位（量级）
 - ignore: 不需要变动 version 的包
 - ___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH: 在每次 version 变动时一定无理由 patch 抬升依赖他的那些包的版本，防止陷入 major 优先的未更新问题
+
+### Config
+根package.json中加入
+```
+"scripts": {
+  "changeset": "changeset",
+  "version-packages": "changeset version",
+  "release": "pnpm build && pnpm release:only",
+  "release:only": "changeset publish --registry=https://registry.npmjs.com/"
+},
+```
 
 ### 如何使用changesets
 ```
